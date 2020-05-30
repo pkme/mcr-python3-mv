@@ -26,7 +26,7 @@ class MyServer(socketserver.BaseRequestHandler):
 
         while True:  
           print ('please wait...') 
-          f = open('IN_convMatrix.txt', 'wb')  
+          f = open('IN_Inter_P.txt', 'wb')  
           while True:  
             data = self.request.recv(1024)
             bytEOF = 'EOF'
