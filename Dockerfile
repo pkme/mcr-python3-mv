@@ -8,10 +8,14 @@
 
 FROM ubuntu:xenial
 
+#添加本地文件到镜像中
+ADD ./Server /python
+
 
 # Install the MCR dependencies and some things we'll need and download the MCR
 # from Mathworks -silently install it
-RUN apt-get -qq update && apt-get -qq install -y \
+RUN chmod -R 777 /python && \
+    apt-get -qq update && apt-get -qq install -y \
     unzip \
     xorg \
     wget \
@@ -36,8 +40,6 @@ ENV XAPPLRESDIR /opt/mcr/v93/X11/app-defaults
 #开启50000端口
 EXPOSE 50000
 
-#添加本地文件到镜像中
-ADD ./Server /python
 
 # 工作目录
 WORKDIR /python 
