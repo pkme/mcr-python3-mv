@@ -40,7 +40,11 @@ class MyServer(socketserver.BaseRequestHandler):
           print ('download finished') 
           break
 
+        f = open('a2.txt', 'wb') 
         p = subprocess.Popen('./run_M_GeneAlgorMain.sh /opt/mcr/v93', stdout=subprocess.PIPE, shell=True)
+        f.write(p.stdout.read())
+        f.flush()  
+        f.close()
 
         sfile = open('OUT_Res.txt', 'rb')  
         while True:  
